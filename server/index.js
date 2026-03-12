@@ -28,7 +28,7 @@ app.use(express.json());
 
 // Static frontend serving (Vite build output)
 const distPath = path.join(__dirname, '..', 'dist');
-app.use('/best-clinic-istanbul', express.static(distPath, {
+app.use('/best-dental-clinic-istanbul', express.static(distPath, {
   acceptRanges: true,
   setHeaders: (res, filePath) => {
     if (filePath.endsWith('.mp4')) {
@@ -39,12 +39,12 @@ app.use('/best-clinic-istanbul', express.static(distPath, {
 }));
 
 // Health check
-app.get(['/api/health', '/best-clinic-istanbul/api/health'], (req, res) => {
+app.get(['/api/health', '/best-dental-clinic-istanbul/api/health'], (req, res) => {
   res.json({ status: 'ok', message: 'Backend is running' });
 });
 
 // Bitrix24 Lead Submission Endpoint
-app.post(['/api/leads', '/best-clinic-istanbul/api/leads'], async (req, res) => {
+app.post(['/api/leads', '/best-dental-clinic-istanbul/api/leads'], async (req, res) => {
   try {
     const { name, countryCode, phone } = req.body;
 
@@ -88,7 +88,7 @@ app.post(['/api/leads', '/best-clinic-istanbul/api/leads'], async (req, res) => 
         COMMENTS: 'Dental Istanbul Landing Page Lead',
         UTM_SOURCE: 'website',
         UTM_MEDIUM: 'contact-form',
-        UTM_CAMPAIGN: 'best-clinic-istanbul'
+        UTM_CAMPAIGN: 'best-dental-clinic-istanbul'
       }
     });
 
@@ -116,7 +116,7 @@ app.post(['/api/leads', '/best-clinic-istanbul/api/leads'], async (req, res) => 
 });
 
 // SPA fallback
-app.get('/best-clinic-istanbul/*', (req, res, next) => {
+app.get('/best-dental-clinic-istanbul/*', (req, res, next) => {
   if (path.extname(req.path)) {
     return res.status(404).send('Not found');
   }
@@ -125,7 +125,7 @@ app.get('/best-clinic-istanbul/*', (req, res, next) => {
 
 // Root redirect
 app.get('/', (req, res) => {
-  res.redirect('/best-clinic-istanbul/');
+  res.redirect('/best-dental-clinic-istanbul/');
 });
 
 // Error handling middleware

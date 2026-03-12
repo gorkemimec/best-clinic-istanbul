@@ -1,26 +1,26 @@
 <?php
 // public_html/proxy_dentist.php
-// imeclinic.com/best-clinic-istanbul -> Coolify VPS
+// imeclinic.com/best-dental-clinic-istanbul -> Coolify VPS
 //
 // KULLANIM:
 // 1. Bu dosyayı imeclinic.com hosting'inin public_html klasörüne yükleyin
 // 2. .htaccess'e aşağıdaki kuralı ekleyin:
-//    RewriteRule ^best-clinic-istanbul(/.*)?$ /proxy_dentist.php?path=$1 [QSA,L]
+//    RewriteRule ^best-dental-clinic-istanbul(/.*)?$ /proxy_dentist.php?path=$1 [QSA,L]
 // 3. Coolify'da deploy ettikten sonra aşağıdaki $upstreamBase ve $upstreamHost
 //    değerlerini Coolify'ın verdiği URL ile güncelleyin
 
 // =============================================
 // COOLIFY ADRESİ - Deploy sonrası güncelleyin!
 // =============================================
-$upstreamBase = 'http://COOLIFY_URL_BURAYA.sslip.io';
-$upstreamHost = 'COOLIFY_URL_BURAYA.sslip.io';
-$hostPublic = 'https://www.imeclinic.com/best-clinic-istanbul';
+$upstreamBase = 'http://ts8sckc4cg0o0go0wskskc0k.72.61.137.168.sslip.io';
+$upstreamHost = 'ts8sckc4cg0o0go0wskskc0k.72.61.137.168.sslip.io';
+$hostPublic = 'https://www.imeclinic.com/best-dental-clinic-istanbul';
 
 $path = $_GET['path'] ?? '/';
 
-// /best-clinic-istanbul prefix'ini koru
-if (strpos($path, '/best-clinic-istanbul') !== 0) {
-    $path = '/best-clinic-istanbul' . $path;
+// /best-dental-clinic-istanbul prefix'ini koru
+if (strpos($path, '/best-dental-clinic-istanbul') !== 0) {
+    $path = '/best-dental-clinic-istanbul' . $path;
 }
 
 $query = $_SERVER['QUERY_STRING'] ?? '';

@@ -852,7 +852,7 @@ function QuoteModal({ open, onClose }) {
     try {
       const API_URL = window.location.hostname === 'localhost'
         ? 'http://localhost:3000/api/leads'
-        : `${window.location.origin}/best-clinic-istanbul/api/leads`
+        : `${window.location.origin}/best-dental-clinic-istanbul/api/leads`
 
       const res = await fetch(API_URL, {
         method: 'POST',
