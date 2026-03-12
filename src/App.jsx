@@ -646,11 +646,13 @@ function Certificates() {
         </div>
         <div className="certs-grid">
           {CERTS.map((c, i) => (
-            <div key={i} className="cert-card" onClick={() => c.cert && setPopup(c)}>
-              <img src={c.logo} alt={c.name} className="cert-logo" />
-              <h3>{c.name}</h3>
-              <p>{c.desc}</p>
-              {c.cert && <span className="cert-view">View Certificate →</span>}
+            <div key={i} className="cert-card" style={{'--card-accent': c.color}} onClick={() => c.cert && setPopup(c)}>
+              <div className="cert-card-inner">
+                <img src={c.logo} alt={c.name} className="cert-logo" />
+                <h3>{c.name}</h3>
+                <p>{c.desc}</p>
+                {c.cert && <span className="cert-view">View Certificate →</span>}
+              </div>
             </div>
           ))}
         </div>
