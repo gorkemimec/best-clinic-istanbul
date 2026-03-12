@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from 'react'
 import './index.css'
+import { useIsTurkeyVisitor } from './useIsTurkeyVisitor'
 
 const B = import.meta.env.BASE_URL
 const LOGO = 'https://imeclinic.com/assets/img/logo.svg'
@@ -930,20 +931,28 @@ function QuoteModal({ open, onClose }) {
 export default function App() {
   const [quoteOpen, setQuoteOpen] = useState(false)
   const openQuote = () => setQuoteOpen(true)
+  const isTR = useIsTurkeyVisitor()
   return (
     <>
       <TopBanner onGetQuote={openQuote} />
       <Navbar />
       <Hero onGetQuote={openQuote} />
       <TrustStripe />
-      <TreatmentPrices />
-      <BeforeAfterGallery onGetQuote={openQuote} />
-      <WhyUs />
+      {isTR && (
+        <div style={{background:'#fff',padding:'16px 20px',textAlign:'center'}}>
+          <p style={{color:'#9ca3af',fontSize:'14px',maxWidth:'900px',margin:'0 auto',lineHeight:'1.6'}}>
+            Uluslararası sağlık turizmi koordinasyon hizmetleri sunulmaktadır. Fiyatlar yalnızca yurt dışından gelen hastalar için geçerlidir.
+          </p>
+        </div>
+      )}
+      {!isTR && <TreatmentPrices />}
+      {!isTR && <BeforeAfterGallery onGetQuote={openQuote} />}
+      {!isTR && <WhyUs />}
       <Process onGetQuote={openQuote} />
-      <VideoReels />
+      {!isTR && <VideoReels />}
       <BrandLogos />
       <Certificates />
-      <Hotels />
+      {!isTR && <Hotels />}
       <Footer onGetQuote={openQuote} />
       <FloatingCTA onGetQuote={openQuote} />
       <QuoteModal open={quoteOpen} onClose={() => setQuoteOpen(false)} />
