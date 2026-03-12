@@ -66,7 +66,7 @@ const REEL_VIDEOS = [
 /* ─────────── CERTIFICATES ─────────── */
 const CERTS = [
   { name: 'JCI Accreditation', desc: 'Global gold standard — 1,000+ quality standards', logo: `${B}logos/logo-jci.png`, cert: `${B}logos/jci.jpg`, color: '#1a6fb5' },
-  { name: 'TEMOS International', desc: 'Europe\'s leading medical tourism certification', logo: `${B}logos/hero_temos.png`, cert: `${B}logos/temos.jpg`, color: '#0D9488' },
+  { name: 'TEMOS International', desc: 'Europe\'s leading medical tourism certification', logo: `${B}logos/hero_temos.png`, cert: `${B}logos/temos.jpg`, color: '#F97316' },
   { name: 'ISO 9001:2015', desc: 'International quality management system', logo: `${B}logos/iso.svg`, cert: `${B}logos/iso.jpg`, color: '#DC5A1E' },
   { name: 'Diplomatic Council', desc: 'Preferred partner hospital for 180+ countries', logo: `${B}logos/dc.webp`, cert: `${B}logos/dc.jpg`, color: '#2B6CB0' },
   { name: 'LEED Gold', desc: 'U.S. Green Building Council certified', logo: `${B}logos/leedgold.webp`, cert: `${B}logos/leedgold.jpg`, color: '#16A34A' },

@@ -15,9 +15,9 @@
   --text-muted: #94A3B8;
   --gold-400: #F59E0B;
   --gold-500: #D97706;
-  --teal-400: #2DD4BF;
-  --teal-500: #14B8A6;
-  --teal-600: #0D9488;
+  --teal-400: #FB923C;
+  --teal-500: #F97316;
+  --teal-600: #EA580C;
   --wa-green: #25D366;
   --border: rgba(0,0,0,.06);
   --border-hover: rgba(0,0,0,.12);
@@ -29,11 +29,11 @@
   --font: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
 
   /* Gradient palette */
-  --grad-hero: linear-gradient(135deg, #0B1F38 0%, #1A3A5C 40%, #0D9488 100%);
-  --grad-teal: linear-gradient(135deg, #14B8A6, #0D9488);
+  --grad-hero: linear-gradient(135deg, #0B1F38 0%, #1A3A5C 40%, #EA580C 100%);
+  --grad-teal: linear-gradient(135deg, #F97316, #EA580C);
   --grad-gold: linear-gradient(135deg, #F59E0B, #D97706);
   --grad-warm: linear-gradient(135deg, #FEF3C7 0%, #FDE68A 100%);
-  --grad-cool: linear-gradient(135deg, #CCFBF1 0%, #99F6E4 100%);
+  --grad-cool: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
   --grad-section: linear-gradient(180deg, #F8FAFB 0%, #F0F4F8 100%);
   --grad-section-alt: linear-gradient(180deg, #FFFFFF 0%, #F8FAFB 100%);
 }
@@ -1480,7 +1480,7 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fon
 
 /* CTA strip */
 .footer-cta {
-  background: linear-gradient(135deg, #0d9488, #14b8a6, #0d9488);
+  background: linear-gradient(135deg, #EA580C, #F97316, #EA580C);
   padding: 36px 0;
 }
 .footer-cta-inner {
