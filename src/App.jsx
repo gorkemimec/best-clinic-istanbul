@@ -107,11 +107,11 @@ const WHY_US = [
 
 /* ─────────── PROCESS STEPS ─────────── */
 const STEPS = [
-  { n: '01', icon: 'camera', title: 'Send Your Photos', desc: 'Share your dental photos via WhatsApp for a free assessment and personalized treatment plan.' },
-  { n: '02', icon: 'clipboard', title: 'Get Your Plan & Price', desc: 'Receive a detailed treatment plan with transparent pricing — no hidden fees, ever.' },
-  { n: '03', icon: 'plane', title: 'Fly to Istanbul', desc: 'We arrange your VIP airport transfer, luxury hotel stay, and all appointments.' },
-  { n: '04', icon: 'tooth', title: 'Get Treatment', desc: 'Your treatment is performed by specialist dentists in our JCI-accredited hospital.' },
-  { n: '05', icon: 'smile', title: 'Fly Home Smiling', desc: 'Leave Istanbul with your perfect smile and enjoy lifetime follow-up support.' },
+  { n: '01', icon: 'camera', title: 'Send Your Photos', desc: 'Share your dental photos via WhatsApp for a free assessment and personalized treatment plan.', image: `${B}steps/step-1.png` },
+  { n: '02', icon: 'clipboard', title: 'Get Your Plan & Price', desc: 'Receive a detailed treatment plan with transparent pricing — no hidden fees, ever.', image: `${B}steps/step-2.png` },
+  { n: '03', icon: 'plane', title: 'Fly to Istanbul', desc: 'We arrange your VIP airport transfer, luxury hotel stay, and all appointments.', image: `${B}steps/step-3.png` },
+  { n: '04', icon: 'tooth', title: 'Get Treatment', desc: 'Your treatment is performed by specialist dentists in our JCI-accredited hospital.', image: `${B}steps/step-4.png` },
+  { n: '05', icon: 'smile', title: 'Fly Home Smiling', desc: 'Leave Istanbul with your perfect smile and enjoy lifetime follow-up support.', image: `${B}steps/step-5.png` },
 ]
 
 
@@ -511,11 +511,19 @@ function Process({ onGetQuote }) {
         <div className="process-grid">
           {STEPS.map((s, i) => (
             <div key={i} className="process-card">
-              <div className="process-num">{s.n}</div>
-              <div className="process-icon">{ICONS[s.icon]}</div>
-              <h3>{s.title}</h3>
-              <p>{s.desc}</p>
-              {i < STEPS.length - 1 && <div className="process-connector" />}
+              <div className="process-img-wrap">
+                <img src={s.image} alt={s.title} className="process-img" />
+                <span className="process-badge">{s.n}</span>
+              </div>
+              <div className="process-body">
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+              </div>
+              {i < STEPS.length - 1 && (
+                <div className="process-connector">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal-500)" strokeWidth="2.5" strokeLinecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+                </div>
+              )}
             </div>
           ))}
         </div>

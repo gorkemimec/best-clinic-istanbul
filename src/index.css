@@ -945,68 +945,97 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fon
 
 /* ═══════════════════════ PROCESS ═══════════════════════ */
 .process-section {
-  background: var(--grad-section-alt);
+  background: linear-gradient(180deg, #fff 0%, #F8F9FB 100%);
 }
 .process-grid {
-  display: flex;
-  gap: 14px;
-  overflow-x: auto;
-  padding-bottom: 8px;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  position: relative;
 }
 .process-card {
   position: relative;
-  flex: 0 0 215px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 26px 20px;
-  text-align: center;
-  box-shadow: var(--shadow-sm);
-  transition: transform .2s, box-shadow .2s;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,.04);
+  transition: all .3s ease;
 }
 .process-card:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-md);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 48px rgba(0,0,0,.1);
 }
-.process-num {
-  font-size: .6rem;
+.process-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+}
+.process-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+.process-card:hover .process-img {
+  transform: scale(1.06);
+}
+.process-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  background: var(--teal-500);
+  color: #fff;
+  font-size: .7rem;
   font-weight: 800;
-  color: var(--teal-500);
-  letter-spacing: .12em;
-  margin-bottom: 10px;
-}
-.process-icon {
-  margin-bottom: 14px;
-  width: 56px; height: 56px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 50%;
-  background: linear-gradient(135deg, rgba(20,184,166,.06), rgba(13,148,136,.1));
-  margin: 0 auto 14px;
-  color: var(--teal-600);
+  box-shadow: 0 2px 8px rgba(249,115,22,.3);
+  letter-spacing: .02em;
 }
-.process-icon svg { width: 24px; height: 24px; }
-.process-card h3 {
-  font-size: .82rem;
+.process-body {
+  padding: 18px 16px 20px;
+}
+.process-body h3 {
+  font-size: .85rem;
   font-weight: 700;
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   color: var(--text);
 }
-.process-card p {
+.process-body p {
   font-size: .72rem;
-  color: var(--text-secondary);
-  line-height: 1.65;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 .process-connector {
   position: absolute;
   top: 50%;
-  right: -14px;
-  width: 14px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--teal-400), transparent);
+  right: -18px;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .process-cta { text-align: center; margin-top: 40px; }
+
+@media (max-width: 1024px) {
+  .process-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .process-connector { display: none; }
+}
+@media (max-width: 640px) {
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+}
+@media (max-width: 400px) {
+  .process-grid { grid-template-columns: 1fr; }
+}
 
 
 /* ═══════════════════════ HOSPITAL GALLERY ═══════════════════════ */
