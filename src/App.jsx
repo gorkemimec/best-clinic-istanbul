@@ -360,15 +360,15 @@ function Hero({ onGetQuote, t }) {
 
 /* ── TRUST MARQUEE ── */
 function TrustStripe({ t }) {
-  const items = ['Save Up To 70%', 'JCI Accredited Hospital', 'Lifetime Guarantee', 'German Implants', '5-Star Hotels', 'VIP Airport Transfer', 'Free Consultation', '40+ Countries Served', 'CAD/CAM Technology', 'No Hidden Fees']
+  const items = t.trustMarquee || ['Save Up To 70%', 'JCI Accredited Hospital', 'Lifetime Guarantee', 'German Implants', '5-Star Hotels', 'VIP Airport Transfer', 'Free Consultation', '40+ Countries Served', 'CAD/CAM Technology', 'No Hidden Fees']
   const d = [...items, ...items, ...items]
   return (
     <div className="trust-stripe">
       <div className="trust-track">
-        {d.map((t, i) => (
+        {d.map((item, i) => (
           <div key={i} className="trust-item">
             <span className="trust-dot" />
-            <span>{t}</span>
+            <span>{item}</span>
           </div>
         ))}
       </div>
@@ -383,25 +383,25 @@ function TreatmentPrices({ t }) {
     <section id="treatments" className="section treatments-section">
       <div className="container">
         <div className="section-header">
-          <span className="section-label">{ICONS.diamond} Transparent Pricing</span>
-          <h2>Treatment <span className="gold">Prices</span></h2>
-          <p>Premium dental care at unbeatable prices. All treatments include personal coordinator, hotel assistance, and VIP transfers.</p>
+          <span className="section-label">{ICONS.diamond} {t.treatments.label}</span>
+          <h2>{t.treatments.title} <span className="gold">{t.treatments.titleHL}</span></h2>
+          <p>{t.treatments.desc}</p>
         </div>
         <div className="price-grid">
-          {TREATMENTS.map((t, i) => (
-            <div key={i} className={`price-card ${t.tag ? 'price-card--featured' : ''}`}>
+          {TREATMENTS.map((tr, i) => (
+            <div key={i} className={`price-card ${tr.tag ? 'price-card--featured' : ''}`}>
               <div className="price-card-img">
-                <img src={t.image} alt={t.name} loading="lazy" />
-                {t.tag && <span className="price-tag">{t.tag}</span>}
+                <img src={tr.image} alt={tr.name} loading="lazy" />
+                {tr.tag && <span className="price-tag">{tr.tag === 'Most Popular' ? t.treatments.tag : tr.tag === 'Best Value' ? t.treatments.tagBest : tr.tag}</span>}
               </div>
               <div className="price-card-body">
-                <h3>{t.name}</h3>
+                <h3>{tr.name}</h3>
                 <div className="price-row">
-                  <span className="price-old">{t.oldPrice}</span>
-                  <span className="price-new">{t.price}</span>
+                  <span className="price-old">{tr.oldPrice}</span>
+                  <span className="price-new">{tr.price}</span>
                 </div>
                 <a href={WA} target="_blank" rel="noopener noreferrer" className="price-btn">
-                  Get Quote →
+                  {t.treatments.cta} →
                 </a>
               </div>
             </div>
@@ -409,7 +409,7 @@ function TreatmentPrices({ t }) {
         </div>
         <div className="price-note">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
-          <span>Prices are indicative. Final pricing is determined after clinical examination. No hidden fees — guaranteed.</span>
+          <span>{t.priceNote || 'Prices are indicative. Final pricing is determined after clinical examination. No hidden fees — guaranteed.'}</span>
         </div>
       </div>
     </section>
@@ -448,9 +448,9 @@ function BeforeAfterGallery({ onGetQuote, t }) {
     <section id="before-after" className="section ba-section">
       <div className="container">
         <div className="section-header">
-          <span className="section-label">{ICONS.sparkles} Real Patient Results</span>
-          <h2>Before & <span className="gold">After</span></h2>
-          <p>See the stunning smile transformations from our patients.</p>
+          <span className="section-label">{ICONS.sparkles} {t.ba.label}</span>
+          <h2>{t.ba.title} <span className="gold">{t.ba.titleHL}</span></h2>
+          <p>{t.ba.desc}</p>
         </div>
       </div>
 
@@ -464,7 +464,7 @@ function BeforeAfterGallery({ onGetQuote, t }) {
             <div key={i} className="ba-slide">
               <img src={item.image} alt={item.text} loading="lazy" />
               <div className="ba-slide-info">
-                <span className="ba-slide-badge">Before → After</span>
+                <span className="ba-slide-badge">{t.ba.title} {t.ba.titleHL}</span>
                 <span className="ba-slide-title">{item.text}</span>
               </div>
             </div>
@@ -493,7 +493,7 @@ function BeforeAfterGallery({ onGetQuote, t }) {
       <div className="container">
         <div className="ba-cta-row">
           <button onClick={onGetQuote} className="btn-primary">
-            Send Your Photos for Free Assessment →
+            {t.ba.cta} →
           </button>
         </div>
       </div>
@@ -508,15 +508,15 @@ function WhyUs({ t }) {
     <section id="why-us" className="section why-section">
       <div className="container">
         <div className="section-header">
-          <span className="section-label">{ICONS.trophy} Why IME Clinic</span>
-          <h2>Why Choose <span className="gold">Us</span></h2>
+          <span className="section-label">{ICONS.trophy} {t.why.label}</span>
+          <h2>{t.why.title} <span className="gold">{t.why.titleHL}</span></h2>
         </div>
         <div className="why-grid">
           {WHY_US.map((item, i) => (
             <div key={i} className="why-card">
               <div className="why-icon">{ICONS[item.icon]}</div>
-              <h3>{item.title}</h3>
-              <p>{item.desc}</p>
+              <h3>{t.why.items[i]?.title || item.title}</h3>
+              <p>{t.why.items[i]?.desc || item.desc}</p>
             </div>
           ))}
         </div>
@@ -676,9 +676,9 @@ function Certificates({ t }) {
     <section id="certificates" className="section certs-section">
       <div className="container">
         <div className="section-header">
-          <span className="section-label">{ICONS.award} Trust & Quality</span>
-          <h2>Accreditations & <span className="gold">Certificates</span></h2>
-          <p>Our partner hospital holds the highest international healthcare accreditations, ensuring world-class treatment standards.</p>
+          <span className="section-label">{ICONS.award} {t.certs.label}</span>
+          <h2>{t.certs.title} <span className="gold">{t.certs.titleHL}</span></h2>
+          <p>{t.certs.desc}</p>
         </div>
         <div className="certs-grid">
           {CERTS.map((c, i) => (
@@ -687,7 +687,7 @@ function Certificates({ t }) {
                 <img src={c.logo} alt={c.name} className="cert-logo" />
                 <h3>{c.name}</h3>
                 <p>{c.desc}</p>
-                {c.cert && <span className="cert-view">View Certificate →</span>}
+                {c.cert && <span className="cert-view">{t.certs.view}</span>}
               </div>
             </div>
           ))}
@@ -711,41 +711,63 @@ function Certificates({ t }) {
 
 /* ── HOTELS ── */
 function Hotels({ t }) {
+  const [lightbox, setLightbox] = useState(null)
   return (
     <section id="hotels" className="section hotels-section">
       <div className="container">
         <div className="section-header">
-          <span className="section-label">{ICONS.hotel} Accommodation</span>
-          <h2>Partner <span className="gold">Hotels</span></h2>
-          <p>Stay in luxury during your treatment. All hotels are near the hospital with VIP transfer service.</p>
+          <span className="section-label">{ICONS.hotel} {t.hotels.label}</span>
+          <h2>{t.hotels.title} <span className="gold">{t.hotels.titleHL}</span></h2>
+          <p>{t.hotels.desc}</p>
         </div>
         <div className="hotels-grid">
           {HOTELS.map((h, i) => (
-            <HotelCard key={i} hotel={h} />
+            <HotelCard key={i} hotel={h} t={t} onImgClick={(idx) => setLightbox({ hotel: h, idx })} />
           ))}
         </div>
       </div>
+
+      {/* Hotel Lightbox */}
+      {lightbox && (
+        <div className="lightbox" onClick={() => setLightbox(null)}>
+          <div className="lightbox-inner lightbox-hotel" onClick={e => e.stopPropagation()}>
+            <button className="lightbox-close" onClick={() => setLightbox(null)}>
+              <svg width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
+            </button>
+            <img src={lightbox.hotel.images[lightbox.idx]} alt={lightbox.hotel.name} className="lightbox-img" />
+            <div className="lightbox-hotel-nav">
+              <button onClick={() => setLightbox(prev => ({ ...prev, idx: (prev.idx - 1 + prev.hotel.images.length) % prev.hotel.images.length }))}>
+                <svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round"><polyline points="15 18 9 12 15 6" /></svg>
+              </button>
+              <span>{lightbox.idx + 1} / {lightbox.hotel.images.length} — {lightbox.hotel.name}</span>
+              <button onClick={() => setLightbox(prev => ({ ...prev, idx: (prev.idx + 1) % prev.hotel.images.length }))}>
+                <svg width={20} height={20} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2.5} strokeLinecap="round"><polyline points="9 18 15 12 9 6" /></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   )
 }
 
-function HotelCard({ hotel }) {
+function HotelCard({ hotel, t, onImgClick }) {
   const [imgIdx, setImgIdx] = useState(0)
   return (
     <div className="hotel-card">
-      <div className="hotel-img-wrap">
+      <div className="hotel-img-wrap" onClick={() => onImgClick(imgIdx)} style={{ cursor: 'pointer' }}>
         <img src={hotel.images[imgIdx]} alt={hotel.name} loading="lazy" />
         <div className="hotel-img-nav">
-          <button onClick={() => setImgIdx(i => (i - 1 + hotel.images.length) % hotel.images.length)}>‹</button>
+          <button onClick={(e) => { e.stopPropagation(); setImgIdx(i => (i - 1 + hotel.images.length) % hotel.images.length) }}>‹</button>
           <span>{imgIdx + 1}/{hotel.images.length}</span>
-          <button onClick={() => setImgIdx(i => (i + 1) % hotel.images.length)}>›</button>
+          <button onClick={(e) => { e.stopPropagation(); setImgIdx(i => (i + 1) % hotel.images.length) }}>›</button>
         </div>
         <div className="hotel-stars">{'★'.repeat(hotel.stars)}</div>
       </div>
       <div className="hotel-info">
         <h3>{hotel.name}</h3>
-        <div className="hotel-dist">{ICONS.mapPin} {hotel.km} from hospital</div>
-        <a href={hotel.booking} target="_blank" rel="noopener noreferrer" className="hotel-book">View on Booking →</a>
+        <div className="hotel-dist">{ICONS.mapPin} {hotel.km}</div>
+        <a href={hotel.booking} target="_blank" rel="noopener noreferrer" className="hotel-book">{t.hotels.book}</a>
       </div>
     </div>
   )
@@ -780,11 +802,11 @@ function Footer({ onGetQuote, t }) {
       <div className="footer-cta">
         <div className="container footer-cta-inner">
           <div>
-            <h3>Ready to Transform Your Smile?</h3>
-            <p>Get a free treatment plan and quote — no commitment, no hidden fees.</p>
+            <h3>{t.footer.cta}</h3>
+            <p>{t.footer.ctaDesc}</p>
           </div>
           <button onClick={onGetQuote} className="btn-primary">
-            Get Free Consultation
+            {t.footer.ctaBtn}
           </button>
         </div>
       </div>
@@ -794,25 +816,25 @@ function Footer({ onGetQuote, t }) {
         <div className="footer-main">
           <div className="footer-brand">
             <img src={LOGO} alt="IME Clinic" className="footer-logo" />
-            <p>Operating under IME Hayat Sağlık Turizmi A.Ş., we provide expert dental treatment coordination in internationally accredited hospitals.</p>
+            <p>{t.footer.aboutDesc}</p>
           </div>
           <div className="footer-cols">
             <div className="footer-col">
-              <h4>Quick Links</h4>
-              <a href="#treatments">Treatment Prices</a>
-              <a href="#before-after">Before & After</a>
-              <a href="#hospital">Hospital Tour</a>
-              <a href="#hotels">Hotels</a>
-              <a href="#certificates">Certificates</a>
+              <h4>{t.footer.links}</h4>
+              <a href="#treatments">{t.footer.treatments}</a>
+              <a href="#before-after">{t.ba.label}</a>
+              <a href="#hospital">{t.gallery.label}</a>
+              <a href="#hotels">{t.nav.hotels}</a>
+              <a href="#certificates">{t.nav.certificates}</a>
             </div>
             <div className="footer-col">
-              <h4>Contact</h4>
+              <h4>{t.footer.contactUs}</h4>
               <a href="tel:+905465248334">+90 546 524 83 34</a>
               <a href="mailto:info@imeclinic.com">info@imeclinic.com</a>
               <a href="https://imeclinic.com" target="_blank" rel="noopener noreferrer">imeclinic.com</a>
             </div>
             <div className="footer-col">
-              <h4>Certifications</h4>
+              <h4>{t.nav.certificates}</h4>
               <span>Health Tourism License: AK-1346</span>
               <span>TURSAB: 13098</span>
               <span>Registered Trademark: IME Clinic</span>
@@ -823,7 +845,7 @@ function Footer({ onGetQuote, t }) {
         <div className="footer-divider" />
 
         <div className="footer-bottom">
-          <span>© 2026 IME Hayat Sağlık Turizmi A.Ş. All rights reserved.</span>
+          <span>{t.footer.rights}</span>
           <div className="footer-social">
             <a href="https://www.instagram.com/imeclinic" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
               <svg width={16} height={16} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" /><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" /><line x1="17.5" y1="6.5" x2="17.51" y2="6.5" /></svg>
@@ -925,21 +947,20 @@ function QuoteModal({ open, onClose, t }) {
         </button>
 
         <div className="quote-header">
-          <h3>Get Your Free Quote</h3>
-          <p>We'll contact you within 24 hours</p>
+          <h3>{t.quote.title} <span style={{color:'var(--teal-500)'}}>{t.quote.titleHL}</span></h3>
+          <p>{t.quote.desc}</p>
         </div>
 
         {sent ? (
           <div className="quote-success">
             <svg width={48} height={48} viewBox="0 0 24 24" fill="none" stroke="var(--teal-500)" strokeWidth={2} strokeLinecap="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            <h4>Request Sent!</h4>
-            <p>Our team will reach out to you shortly.</p>
+            <h4>{t.quote.success}</h4>
           </div>
         ) : (
           <form className="quote-form" onSubmit={handleSubmit}>
             <div className="quote-field">
               <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-              <input type="text" placeholder="Your Full Name *" value={name} onChange={e => setName(e.target.value)} required />
+              <input type="text" placeholder={t.quote.name} value={name} onChange={e => setName(e.target.value)} required />
             </div>
             <div className="quote-field">
               <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
@@ -949,12 +970,12 @@ function QuoteModal({ open, onClose, t }) {
             </div>
             <div className="quote-field">
               <svg width={18} height={18} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.12.96.36 1.9.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.91.34 1.85.58 2.81.7A2 2 0 0122 16.92z"/></svg>
-              <input type="tel" placeholder="Phone Number *" value={phone} onChange={e => setPhone(e.target.value)} required />
+              <input type="tel" placeholder={t.quote.phone} value={phone} onChange={e => setPhone(e.target.value)} required />
             </div>
             <button type="submit" className="quote-submit" disabled={submitting}>
-              {submitting ? 'Sending...' : 'Get Free Quote Now 🎁'}
+              {submitting ? t.quote.sending : t.quote.submit}
             </button>
-            <p className="quote-trust">🛡️ 100% Secure • GDPR Compliant</p>
+            <p className="quote-trust">{t.quote.trust}</p>
           </form>
         )}
       </div>

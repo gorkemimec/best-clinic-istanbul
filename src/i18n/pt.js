@@ -1,4 +1,5 @@
 const pt = {
+  trustMarquee: ['Economize até 70%', 'Hospital credenciado JCI', 'Garantia vitalícia', 'Implantes alemães', 'Hotéis 5 estrelas', 'Transfer VIP', 'Consulta grátis', '40+ países atendidos', 'Tecnologia CAD/CAM', 'Sem custos ocultos'],
   topBanner: { text: 'ECONOMIZE ATÉ 70% EM TRATAMENTOS DENTÁRIOS EM ISTAMBUL', textTR: 'SERVIÇOS DE TURISMO DE SAÚDE INTERNACIONAL', btn: 'PLANO GRÁTIS' },
   nav: { treatments: 'Tratamentos', howItWorks: 'Como funciona', gallery: 'Clínica', certificates: 'Certificados', hotels: 'Hotéis', contact: 'Contato' },
   hero: {

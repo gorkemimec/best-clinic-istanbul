@@ -1,4 +1,5 @@
 const it = {
+  trustMarquee: ['Risparmia fino al 70%', 'Ospedale accreditato JCI', 'Garanzia a vita', 'Impianti tedeschi', 'Hotel 5 stelle', 'Trasferimento VIP', 'Consulto gratuito', '40+ paesi serviti', 'Tecnologia CAD/CAM', 'Nessun costo nascosto'],
   topBanner: { text: 'RISPARMIA FINO AL 70% SULLE CURE DENTALI A ISTANBUL', textTR: 'SERVIZI DI TURISMO SANITARIO INTERNAZIONALE', btn: 'PIANO GRATUITO' },
   nav: { treatments: 'Trattamenti', howItWorks: 'Come funziona', gallery: 'Clinica', certificates: 'Certificati', hotels: 'Hotel', contact: 'Contatti' },
   hero: {

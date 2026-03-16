@@ -1,4 +1,5 @@
 const tr = {
+  trustMarquee: ["%70'e Kadar Tasarruf", 'JCI Akredite Hastane', 'Ömür Boyu Garanti', 'Alman İmplantlar', '5 Yıldızlı Oteller', 'VIP Havaalanı Transferi', 'Ücretsiz Konsültasyon', '40+ Ülkeye Hizmet', 'CAD/CAM Teknolojisi', 'Gizli Ücret Yok'],
   topBanner: { text: 'ULUSLARARASI SAĞLIK TURİZMİ HİZMETLERİ', textTR: 'ULUSLARARASI SAĞLIK TURİZMİ HİZMETLERİ', btn: 'ÜCRETSİZ TEDAVİ PLANI' },
   nav: { treatments: 'Tedaviler', howItWorks: 'Nasıl Çalışır', gallery: 'Klinik', certificates: 'Sertifikalar', hotels: 'Oteller', contact: 'İletişim' },
   hero: {

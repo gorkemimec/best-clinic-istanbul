@@ -1,4 +1,5 @@
 const en = {
+  trustMarquee: ['Save Up To 70%', 'JCI Accredited Hospital', 'Lifetime Guarantee', 'German Implants', '5-Star Hotels', 'VIP Airport Transfer', 'Free Consultation', '40+ Countries Served', 'CAD/CAM Technology', 'No Hidden Fees'],
   topBanner: { text: 'SAVE UP TO 70% ON DENTAL TREATMENTS IN ISTANBUL', textTR: 'INTERNATIONAL HEALTH TOURISM SERVICES', btn: 'GET FREE TREATMENT PLAN' },
   nav: { treatments: 'Treatments', howItWorks: 'How It Works', gallery: 'Gallery', certificates: 'Certificates', hotels: 'Hotels', contact: 'Contact' },
   hero: {
