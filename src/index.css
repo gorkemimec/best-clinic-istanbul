@@ -219,6 +219,71 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fon
   .hamburger { display: flex; }
 }
 
+/* Language selector */
+.lang-selector { position: relative; }
+.lang-btn {
+  display: flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,.12);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: 8px;
+  padding: 6px 10px;
+  color: #fff;
+  font-size: .76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+.navbar.scrolled .lang-btn {
+  background: rgba(0,0,0,.04);
+  border-color: rgba(0,0,0,.08);
+  color: var(--text);
+}
+.lang-btn:hover { background: rgba(255,255,255,.2); }
+.navbar.scrolled .lang-btn:hover { background: rgba(0,0,0,.08); }
+.lang-code { letter-spacing: .04em; }
+.lang-dropdown {
+  position: absolute; top: calc(100% + 8px); right: 0;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.08);
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0,0,0,.12);
+  overflow: hidden;
+  z-index: 100;
+  min-width: 160px;
+  animation: fadeIn .15s ease;
+}
+.lang-option {
+  display: flex; align-items: center; gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background: none; border: none;
+  font-size: .78rem; font-weight: 500;
+  color: var(--text);
+  cursor: pointer;
+  transition: background .15s;
+}
+.lang-option:hover { background: #f3f4f6; }
+.lang-option.active { background: #FFF7ED; color: var(--teal-500); font-weight: 700; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-4px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Mobile lang bar */
+.mm-lang {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 16px 0; margin-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.mm-lang-btn {
+  width: 40px; height: 40px;
+  border-radius: 50%; border: 2px solid transparent;
+  background: #f3f4f6;
+  font-size: 1.2rem;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all .2s;
+}
+.mm-lang-btn:hover { background: #e5e7eb; }
+.mm-lang-btn.active { border-color: var(--teal-500); background: #FFF7ED; }
+
 /* Mobile menu */
 .mobile-menu {
   position: fixed; inset: 0;
