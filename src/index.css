@@ -125,9 +125,25 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fon
   letter-spacing: .14em;
   text-transform: uppercase;
 }
-.top-banner-text svg {
+.top-banner-text svg:first-child {
   flex-shrink: 0;
   opacity: .9;
+  animation: bannerStarPulse 2s ease-in-out infinite;
+  filter: drop-shadow(0 0 4px rgba(255,255,255,.4));
+}
+.top-banner-text svg:last-child {
+  flex-shrink: 0;
+  opacity: .9;
+  animation: bannerChevronBounce 1.5s ease-in-out infinite;
+}
+.top-banner-text span {
+  position: relative;
+  background: linear-gradient(90deg, #fff 0%, #fff 40%, #fef08a 50%, #fff 60%, #fff 100%);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: bannerTextShimmer 3s ease-in-out infinite;
 }
 .top-banner-btn {
   display: inline-flex;
@@ -142,11 +158,32 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fon
   transition: all .2s;
   box-shadow: 0 2px 8px rgba(0,0,0,.15);
   white-space: nowrap;
+  animation: bannerBtnGlow 2.5s ease-in-out infinite;
 }
 .top-banner-btn:hover {
   background: #fef2f2;
-  transform: translateY(-1px);
+  transform: translateY(-1px) scale(1.05);
   box-shadow: 0 4px 14px rgba(0,0,0,.2);
+}
+
+/* ── Top Banner Animations ── */
+@keyframes bannerStarPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); opacity: .9; filter: drop-shadow(0 0 4px rgba(255,255,255,.3)); }
+  25% { transform: scale(1.2) rotate(15deg); opacity: 1; filter: drop-shadow(0 0 8px rgba(254,240,138,.6)); }
+  50% { transform: scale(1) rotate(0deg); opacity: .9; filter: drop-shadow(0 0 4px rgba(255,255,255,.3)); }
+  75% { transform: scale(1.15) rotate(-10deg); opacity: 1; filter: drop-shadow(0 0 6px rgba(254,240,138,.5)); }
+}
+@keyframes bannerTextShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@keyframes bannerChevronBounce {
+  0%, 100% { transform: translateX(0); }
+  50% { transform: translateX(4px); }
+}
+@keyframes bannerBtnGlow {
+  0%, 100% { box-shadow: 0 2px 8px rgba(0,0,0,.15), 0 0 0 0 rgba(255,255,255,.4); }
+  50% { box-shadow: 0 2px 12px rgba(0,0,0,.2), 0 0 12px 2px rgba(255,255,255,.25); }
 }
 
 @media (max-width: 480px) {
